@@ -15,11 +15,17 @@ class URL:
         return self.path
     
     def __repr__(self) -> str:
-        return f"URL({repr(self.path)})"
+        return f"{self.__class__.__name__}({repr(self.path)})"
     
     def __truediv__(self, other) -> "URL":
         return self.join_path(other)
+    
+class URLPath(URL):
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
 
+
+s = URLPath("Santo")
 
 base_url = URL("http://localhost:8888")
 token = "da739202730ad9f5512504281a4ccf64128a8bd5b42ca896"
